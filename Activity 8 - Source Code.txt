@@ -1,0 +1,85 @@
+This is my own work*
+Joseph Carrillo 
+CST-150 C# I 
+Activity 8
+04/23/22
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Activity_Eight
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+            double fatConsumed;
+            double carbsConsumed;
+            double caloriesFromFat, caloriesFromCarbs;
+            // Try Parse - Input Error message 
+           
+            if(!(Double.TryParse(txtFatConsumed.Text, out fatConsumed)))
+            {
+                MessageBox.Show("Invalid input for fat grams consumed.", " Input Error");
+                txtFatConsumed.Focus();
+            }
+            
+            else if(!(Double.TryParse(txtCarbsConsumed.Text, out carbsConsumed)))
+            {
+                MessageBox.Show("Invalid input for fat grams consumed. ", "Input Error");
+            }
+            // if inputs are valid perform the calculations
+            // calories & carbs caluclation 
+            else
+            {
+                // calculate the calories from the fat
+                caloriesFromFat = fatConsumed * 9;
+                // calculate the calories from carbs
+                caloriesFromCarbs = carbsConsumed * 4;
+
+                // output results 
+                lblCalories.Text = "Calories From Fat = " + caloriesFromFat + "\nCalories from Carbohydrates = " + caloriesFromCarbs;
+            }
+        }
+
+        private void btnCarbs_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            txtCarbsConsumed.Text = "";
+            txtFatConsumed.Text = "";
+            txtFatConsumed.Focus();
+        }
+    }
+}
